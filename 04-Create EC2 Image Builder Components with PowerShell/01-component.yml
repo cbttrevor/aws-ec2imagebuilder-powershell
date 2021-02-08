@@ -1,0 +1,16 @@
+schemaVersion: '1.0'
+
+phases:
+  -
+    name: build
+    steps:
+      -
+        name: InstallNginx2
+        action: ExecuteBash
+        timeoutSeconds: 300
+        onFailure: Abort
+        maxAttempts: 3
+        inputs:
+          commands:
+            - apt-get update && apt-get upgrade --yes
+            - apt-get install nginx --yes
